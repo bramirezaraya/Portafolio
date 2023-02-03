@@ -1,0 +1,51 @@
+
+
+<form class="contenedor" [formGroup]="myForm">
+    <h2>Contacto</h2>
+    <div class="formulario">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" [ngClass]="{'is-valid': myForm.controls['nombre'].valid, 'is-invalid':myForm.controls['nombre'].invalid && myForm.controls['nombre'].dirty }" formControlName="nombre" placeholder="Cristiano Ronaldo siiiiiuuuuu">
+
+            <div *ngIf="myForm.controls['nombre'].invalid && myForm.controls['nombre'].dirty" class="alert alert-danger" role="alert">
+                el nombre es requerido.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="correo" [ngClass]="{'is-valid': myForm.controls['correo'].valid , 'is-invalid':myForm.controls['correo'].invalid && myForm.controls['correo'].dirty}" placeholder="name@example.com">
+
+            <div *ngIf="myForm.controls['correo'].invalid && myForm.controls['correo'].dirty">
+
+                <div *ngIf="myForm.controls['correo'].errors?.required" class="alert alert-danger" role="alert">
+                    el correo es requerido.
+                </div>
+                <div *ngIf="myForm.controls['correo'].errors?.email" class="alert alert-danger" role="alert">
+                    No parece ser un correo.    
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1"  class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="textArea" [ngClass]="{'is-valid': myForm.controls['textArea'].valid , 'is-invalid':myForm.controls['textArea'].invalid && myForm.controls['textArea'].dirty}"  rows="3"></textarea>
+
+            <div *ngIf="myForm.controls['textArea'].invalid && myForm.controls['textArea'].dirty">
+
+                <div *ngIf="myForm.controls['textArea'].errors?.required" class="alert alert-danger" role="alert">
+                    Debe escribir algo.
+                </div>
+                <div *ngIf="myForm.controls['textArea'].errors?.minlength" class="alert alert-danger" role="alert">
+                    debe escribir al menos 10 caracteres.
+                </div>
+            </div>
+                
+        </div>
+        <button [disabled]="!myForm.valid" class="btn btn-secondary" (click)="alerta()">Enviar</button>
+
+    </div>
+</form>
+

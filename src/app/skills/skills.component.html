@@ -1,0 +1,45 @@
+<div class="contenedor" id="skills">
+
+    <div class="contenedor2">
+        <h4 >About me </h4>
+        <p>I am a frontend developer, I have worked with many technologies such as Angular, typescript, javascript, html, css among others.
+            I continue learning about this wonderful industry and am highly motivated to learn new programming languages.</p>
+    </div> 
+
+    <div class="contenedor2">
+        <h4>Technologies that I handle</h4>
+        <swiper
+            [effect]="'fade'"
+            [grabCursor]="true"
+            [centeredSlides]="true"
+            [slidesPerView]="3"
+            [coverflowEffect]="{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true
+                }"
+            [pagination] = "{
+                clickable:true}"
+                
+            [autoplay] ="{
+                delay: 2000,
+                disableOnInteraction: false
+                }"
+            [loop] ="true"
+            class="mySwiper"
+        >
+            <ng-template swiperSlide *ngFor="let imagen of listaImagenes">
+                <img src="../assets/{{imagen.img}}" />
+            </ng-template>
+                
+        </swiper>
+    </div>
+
+<div>
+
+
+<!-- pagination es para poder mover el slide y clickable para poner los circulitos abajo.
+slideperview esta en 'auto' -->
+    
